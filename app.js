@@ -3,6 +3,9 @@ const app = express();
 require('dotenv').config();
 require('./config/db');
 
+//middleware for bodyparser
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 app.use(require('./routes')); // reference directory
 

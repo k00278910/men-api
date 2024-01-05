@@ -1,3 +1,5 @@
+// Create users model with schema
+// Then acquire it through the controller
 const mongoose = require('mongoose');
 const UserSchema = new mongoose.Schema(
     {

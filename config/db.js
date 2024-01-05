@@ -1,3 +1,6 @@
+//  Connect express server to database
+//  using Mongoose
+
 const mongoose = require('mongoose');
 const db = mongoose.connection;
 

@@ -7,9 +7,8 @@ exports.index = (req,res)=>{
     res.send('Users INDEX');
 };
 
-exports.listAll = (req,res)=>{
-    res.send('List all Users');
-};
+
+// CRUD-CREATE
 /* asynch function returns a promise
  a Promise is an object that will 
 produce a single value some time in 
@@ -20,24 +19,36 @@ exports.createUser = async(req,res)=>{
             title:req.body.title,
             bio:req.body.bio,
     });
-
-
-    // // Save to DB
-    // // Use promise
-    // user.save().then((data)=>{
-    //     // 200 for ok status
-    // res.status(200).json(data);
-    // }).catch((err)=>{
-    //     // 200 for ok status
-    // res.status(400).json({msg:err});
-    // }); 
     try{
         const createUser = await user.save();
         res.status(201).json(user);
     }
     catch(err){
         res.status(400).json({msg:err});
-    }
-        
-    
+    } 
 };
+// CRUD - READ
+exports.listAll = async(req,res)=>{
+    
+    try{
+        const query = await User.find();
+        res.status(200).json(query);
+    }
+    catch(err){
+        res.status(400).json({msg:err});
+    } 
+};
+exports.singleUser = async(req,res)=>{
+    try{
+        const query = await User.findById(req.params.id);
+		if (!query) {
+			res.status(400).json({ msg: 'invalid user' });
+		}
+		res.status(200).json(query);
+    }
+    catch(err){
+        res.status(400).json({msg:err});
+    } 
+};
+
+

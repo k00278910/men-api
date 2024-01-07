@@ -38,6 +38,7 @@ exports.listAll = async(req,res)=>{
         res.status(400).json({msg:err});
     } 
 };
+// take in a param to get a user
 exports.singleUser = async(req,res)=>{
     try{
         const query = await User.findById(req.params.id);
@@ -45,6 +46,22 @@ exports.singleUser = async(req,res)=>{
 			res.status(400).json({ msg: 'invalid user' });
 		}
 		res.status(200).json(query);
+    }
+    catch(err){
+        res.status(400).json({msg:err});
+    } 
+};
+
+exports.updateUser = async(req,res)=>{
+    try{
+        const query = await User.findByIdAndUpdate(
+            req.params.id,
+            {
+                $set:req.body, 
+            },{
+                new:true,
+            }
+            );
     }
     catch(err){
         res.status(400).json({msg:err});

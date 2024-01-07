@@ -12,7 +12,7 @@ router.post('/',users_ctrl.createUser);
 router.get('/', users_ctrl.listAll); //GET http://localhost:3000/api/users/
 router.get('/:id', users_ctrl.singleUser); //GET http://localhost:3000/api/users/:id
 //UPDATE (patch or put)
-router.patch('/',users_ctrl.index);
+router.patch('/:id',users_ctrl.updateUser);
 //DELETE
 router.delete('/',users_ctrl.index);
 // app index through router

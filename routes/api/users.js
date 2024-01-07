@@ -14,7 +14,7 @@ router.get('/:id', users_ctrl.singleUser); //GET http://localhost:3000/api/users
 //UPDATE (patch or put)
 router.patch('/:id',users_ctrl.updateUser);
 //DELETE
-router.delete('/',users_ctrl.index);
+router.delete('/:id',users_ctrl.deleteUser);
 // app index through router
 // localhost:3000/api/users
 // router.get('/',users_ctrl.index);

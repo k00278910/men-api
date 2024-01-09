@@ -76,12 +76,12 @@ exports.updateUser = async(req,res)=>{
 //CRUD Delete
 exports.deleteUser = async (req, res) => {
 	try {
-		if (req.body.id) {
-			const query = await User.findByIdAndDelete(req.body.id);
+		if (req.params.id) {
+			const query = await User.findByIdAndDelete(req.params.id);
 			if (!query) {
 				res.status(400).json({ msg: 'invalid user' });
 			}
-			res.status(200).json({ deleted: req.body.id, document: query });
+			res.status(200).json({ deleted: req.params.id, document: query });
 		} else {
 			res.status(400).json({ msg: 'No ID' });
 		}
